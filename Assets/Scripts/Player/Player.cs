@@ -33,9 +33,9 @@ public class Player : SingletonMonoBehavior<Player>
 
   private Rigidbody2D rigidBody2D;
 
-  private Direction playerDirection;
+  public Direction playerDirection;
 
-  private float movementSpeed;
+  public float movementSpeed;
 
   private bool _playerinputIsDisabled = false;
 

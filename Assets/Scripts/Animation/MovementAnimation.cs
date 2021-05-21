@@ -9,11 +9,14 @@ public class MovementAnimation : MonoBehaviour
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        
     }
 
     private void OnEnable()
     {
         EventHandler.MovementEvent += SetAnimationParameters;
+        
+        
     }
 
     private void OnDisable()
