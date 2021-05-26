@@ -57,18 +57,23 @@ public class Player : SingletonMonoBehavior<Player>
   {
     #region Player Input
 
-    ResetAnimationTriggers();
+    if(!PlayerInputIsDisabled)
+    {
+      ResetAnimationTriggers();
 
-    PlayerMovementInput();
+      PlayerMovementInput();
 
-    PlayerWalkInput();
+      PlayerWalkInput();
 
-    EventHandler.CallMovementEvent(xInput, yInput, isWalking, isRunning, isIdle, isCarrying, toolEffect, 
-      isUsingToolRight, isUsingToolLeft, isUsingToolUp, isUsingToolDown,
-      isLiftingToolRight, isLiftingToolLeft, isLiftingToolUp, isLiftingToolDown,
-      isPickingRight, isPickingLeft, isPickingUp, isPickingDown,
-      isSwingingToolRight, isSwingingToolLeft, isSwingingToolUp, isSwingingToolDown,
-      idleUp, idleDown, idleLeft, idleRight);
+      EventHandler.CallMovementEvent(xInput, yInput, isWalking, isRunning, isIdle, isCarrying, toolEffect, 
+        isUsingToolRight, isUsingToolLeft, isUsingToolUp, isUsingToolDown,
+        isLiftingToolRight, isLiftingToolLeft, isLiftingToolUp, isLiftingToolDown,
+        isPickingRight, isPickingLeft, isPickingUp, isPickingDown,
+        isSwingingToolRight, isSwingingToolLeft, isSwingingToolUp, isSwingingToolDown,
+        false, false, false, false);
+      
+    }
+
 
     #endregion
   }
@@ -170,6 +175,39 @@ public class Player : SingletonMonoBehavior<Player>
   {
     //Vector3 viewport position for player ((0,0) viewport bottom left, (1,1) viewport top right)
     return mainCamera.WorldToViewportPoint(transform.position);
+  }
+
+  private void ResetMovement()
+  {
+    xInput = 0f;
+    yInput = 0f;
+    isRunning = false;
+    isWalking = false;
+    isIdle = true;
+  }
+
+  public void DisablePlayerInputAndResetMovement()
+  {
+    DisablePlayerInput();
+    ResetMovement();
+
+    //Send event to any listeners for player movement input
+     EventHandler.CallMovementEvent(xInput, yInput, isWalking, isRunning, isIdle, isCarrying, toolEffect, 
+        isUsingToolRight, isUsingToolLeft, isUsingToolUp, isUsingToolDown,
+        isLiftingToolRight, isLiftingToolLeft, isLiftingToolUp, isLiftingToolDown,
+        isPickingRight, isPickingLeft, isPickingUp, isPickingDown,
+        isSwingingToolRight, isSwingingToolLeft, isSwingingToolUp, isSwingingToolDown,
+        false, false, false, false);
+  }
+
+  public void EnablePlayerInput()
+  {
+    PlayerInputIsDisabled = false;
+  }
+
+  public void DisablePlayerInput()
+  {
+    PlayerInputIsDisabled = true;
   }
 
 }

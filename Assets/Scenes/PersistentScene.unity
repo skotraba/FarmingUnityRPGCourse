@@ -243,6 +243,11 @@ PrefabInstance:
       propertyPath: m_UseSpriteMesh
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8012085288629745381, guid: 25bca95578eff0e45a2b3e58f72499f6,
+        type: 3}
+      propertyPath: inventoryBar
+      value: 
+      objectReference: {fileID: 791597391}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25bca95578eff0e45a2b3e58f72499f6, type: 3}
 --- !u!224 &99133483 stripped
@@ -368,6 +373,51 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1712188467900276737}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &372129535
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 372129537}
+  - component: {fileID: 372129536}
+  m_Layer: 0
+  m_Name: InventoryManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &372129536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 372129535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1998911b3629174d94534627fa569b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryListCapacityIntArray: 
+  itemList: {fileID: 11400000, guid: 6569b80dae72ecc42b10862c645c9fe9, type: 2}
+--- !u!4 &372129537
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 372129535}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.373634, y: 9.737196, z: -1.4414062}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -629,6 +679,11 @@ PrefabInstance:
       propertyPath: m_UseSpriteMesh
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8012085288629745381, guid: 25bca95578eff0e45a2b3e58f72499f6,
+        type: 3}
+      propertyPath: inventoryBar
+      value: 
+      objectReference: {fileID: 791597391}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25bca95578eff0e45a2b3e58f72499f6, type: 3}
 --- !u!224 &669692610 stripped
@@ -678,7 +733,7 @@ Transform:
   m_Children:
   - {fileID: 289035061}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &791597389
 GameObject:
@@ -756,6 +811,8 @@ MonoBehaviour:
   - {fileID: 2128067064}
   - {fileID: 1670343313}
   - {fileID: 1885997793}
+  inventoryBarDraggedItem: {fileID: 1921995826506194902, guid: 7b34dc48d5dcd7843abe73f62a224b10,
+    type: 3}
 --- !u!114 &791597392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1013,6 +1070,11 @@ PrefabInstance:
       propertyPath: m_UseSpriteMesh
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8012085288629745381, guid: 25bca95578eff0e45a2b3e58f72499f6,
+        type: 3}
+      propertyPath: inventoryBar
+      value: 
+      objectReference: {fileID: 791597391}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25bca95578eff0e45a2b3e58f72499f6, type: 3}
 --- !u!224 &1134394895 stripped
@@ -1155,6 +1217,11 @@ PrefabInstance:
       propertyPath: m_UseSpriteMesh
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8012085288629745381, guid: 25bca95578eff0e45a2b3e58f72499f6,
+        type: 3}
+      propertyPath: inventoryBar
+      value: 
+      objectReference: {fileID: 791597391}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25bca95578eff0e45a2b3e58f72499f6, type: 3}
 --- !u!224 &1158278900 stripped
@@ -1303,7 +1370,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1412322816
 PrefabInstance:
@@ -1427,6 +1494,11 @@ PrefabInstance:
       propertyPath: m_UseSpriteMesh
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8012085288629745381, guid: 25bca95578eff0e45a2b3e58f72499f6,
+        type: 3}
+      propertyPath: inventoryBar
+      value: 
+      objectReference: {fileID: 791597391}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25bca95578eff0e45a2b3e58f72499f6, type: 3}
 --- !u!224 &1412322817 stripped
@@ -1656,6 +1728,11 @@ PrefabInstance:
       propertyPath: m_UseSpriteMesh
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8012085288629745381, guid: 25bca95578eff0e45a2b3e58f72499f6,
+        type: 3}
+      propertyPath: inventoryBar
+      value: 
+      objectReference: {fileID: 791597391}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25bca95578eff0e45a2b3e58f72499f6, type: 3}
 --- !u!224 &1460051225 stripped
@@ -1798,6 +1875,11 @@ PrefabInstance:
       propertyPath: m_UseSpriteMesh
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8012085288629745381, guid: 25bca95578eff0e45a2b3e58f72499f6,
+        type: 3}
+      propertyPath: inventoryBar
+      value: 
+      objectReference: {fileID: 791597391}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25bca95578eff0e45a2b3e58f72499f6, type: 3}
 --- !u!224 &1590072669 stripped
@@ -1940,6 +2022,11 @@ PrefabInstance:
       propertyPath: m_UseSpriteMesh
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8012085288629745381, guid: 25bca95578eff0e45a2b3e58f72499f6,
+        type: 3}
+      propertyPath: inventoryBar
+      value: 
+      objectReference: {fileID: 791597391}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25bca95578eff0e45a2b3e58f72499f6, type: 3}
 --- !u!224 &1670343312 stripped
@@ -2082,6 +2169,11 @@ PrefabInstance:
       propertyPath: m_UseSpriteMesh
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8012085288629745381, guid: 25bca95578eff0e45a2b3e58f72499f6,
+        type: 3}
+      propertyPath: inventoryBar
+      value: 
+      objectReference: {fileID: 791597391}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25bca95578eff0e45a2b3e58f72499f6, type: 3}
 --- !u!224 &1885997792 stripped
@@ -2224,6 +2316,11 @@ PrefabInstance:
       propertyPath: m_UseSpriteMesh
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8012085288629745381, guid: 25bca95578eff0e45a2b3e58f72499f6,
+        type: 3}
+      propertyPath: inventoryBar
+      value: 
+      objectReference: {fileID: 791597391}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25bca95578eff0e45a2b3e58f72499f6, type: 3}
 --- !u!224 &2101481787 stripped
@@ -2366,6 +2463,11 @@ PrefabInstance:
       propertyPath: m_UseSpriteMesh
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8012085288629745381, guid: 25bca95578eff0e45a2b3e58f72499f6,
+        type: 3}
+      propertyPath: inventoryBar
+      value: 
+      objectReference: {fileID: 791597391}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25bca95578eff0e45a2b3e58f72499f6, type: 3}
 --- !u!224 &2128067063 stripped
@@ -2757,6 +2859,11 @@ PrefabInstance:
       propertyPath: m_UseSpriteMesh
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8012085288629745381, guid: 25bca95578eff0e45a2b3e58f72499f6,
+        type: 3}
+      propertyPath: inventoryBar
+      value: 
+      objectReference: {fileID: 791597391}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25bca95578eff0e45a2b3e58f72499f6, type: 3}
 --- !u!114 &1712188467900276738 stripped
