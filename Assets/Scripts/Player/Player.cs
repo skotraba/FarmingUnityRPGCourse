@@ -31,6 +31,8 @@ public class Player : SingletonMonoBehavior<Player>
   public bool idleLeft; 
   public bool idleRight;
 
+  private Camera mainCamera;
+
   private Rigidbody2D rigidBody2D;
 
   public Direction playerDirection;
@@ -46,6 +48,9 @@ public class Player : SingletonMonoBehavior<Player>
     base.Awake();
 
     rigidBody2D = GetComponent<Rigidbody2D>();
+
+    // Get reference to camera
+    mainCamera = Camera.main;
   }
 
   private void Update()
@@ -159,6 +164,12 @@ public class Player : SingletonMonoBehavior<Player>
       isIdle = false;
       movementSpeed = Settings.runningSpeed;
     }
+  }
+
+  public Vector3 GetPlayerViewportPosition()
+  {
+    //Vector3 viewport position for player ((0,0) viewport bottom left, (1,1) viewport top right)
+    return mainCamera.WorldToViewportPoint(transform.position);
   }
 
 }

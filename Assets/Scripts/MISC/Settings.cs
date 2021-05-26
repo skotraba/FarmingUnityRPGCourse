@@ -11,7 +11,7 @@ public static class Settings
 
 
       //Player Movement
-      public const float runningSpeed = 5.333f;
+      public const float runningSpeed = 7.333f;
       public const float walkingSpeed = 2.333f;
 
 
