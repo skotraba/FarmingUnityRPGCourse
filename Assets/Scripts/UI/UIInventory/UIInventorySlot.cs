@@ -6,14 +6,18 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 
-public class UIInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class UIInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
     private Camera mainCamera;
     private Transform parentItem;
     private GameObject draggedItem;
 
+    private Canvas parentCanvas;
+
     [SerializeField]  private UIInventoryBar inventoryBar = null;
     [SerializeField] private GameObject itemPrefab = null;
+
+    [SerializeField] private GameObject inventoryTextBoxPrefab = null;
 
     public Image inventorySlotHighlight;
     public Image inventorySlotImage;
@@ -23,6 +27,11 @@ public class UIInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     [HideInInspector] public int itemQuantity;
 
     [SerializeField] private int slotNumber = 0;
+
+    private void Awake()
+    {
+        parentCanvas = GetComponentInParent<Canvas>();
+    }
 
     private void Start()
     {
@@ -88,6 +97,9 @@ public class UIInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
                 // Swap Inventory items in inventory list
                 InventoryManager.Instance.SwapInventoryItems(InventoryLocation.player, slotNumber, toSlotNumber);
+
+                //Destroy inventory text box
+                DestroyInventoryTextBox();
             }
             else
             {
@@ -100,6 +112,52 @@ public class UIInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
             // Enable Player input
             Player.Instance.EnablePlayerInput();
+        }
+    }
+
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        // Populate text box with item details
+        if (itemQuantity != 0)
+        {
+            // Instantiate inventory text box
+            inventoryBar.inventoryTextBoxGameobject = Instantiate(inventoryTextBoxPrefab, transform.position, Quaternion.identity);
+            inventoryBar.inventoryTextBoxGameobject.transform.SetParent(parentCanvas.transform, false);
+
+            UIInventoryTextBox inventoryTextBox = inventoryBar.inventoryTextBoxGameobject.GetComponent<UIInventoryTextBox>();
+
+            // Set item type description
+            string itemTypeDescription = InventoryManager.Instance.GetItemTypeDescription(itemDetails.itemType);
+
+            // Populate text box
+            inventoryTextBox.SetTextBoxText(itemDetails.description, itemTypeDescription, "", itemDetails.itemLongDescription, "", "");
+
+            // Set text box position according to inventory bar position
+            if (inventoryBar.IsInventoryBarPositionBottom)
+            {
+                inventoryBar.inventoryTextBoxGameobject.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0f);
+                inventoryBar.inventoryTextBoxGameobject.transform.position = new Vector3(transform.position.x, transform.position.y + 50f, transform.position.z);
+
+            }
+            else
+            {
+                inventoryBar.inventoryTextBoxGameobject.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 1f);
+                inventoryBar.inventoryTextBoxGameobject.transform.position = new Vector3(transform.position.x, transform.position.y - 50f, transform.position.z);
+            }
+        }
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        DestroyInventoryTextBox();
+    }
+
+    public void DestroyInventoryTextBox()
+    {
+        if (inventoryBar.inventoryTextBoxGameobject != null)
+        {
+            Destroy(inventoryBar.inventoryTextBoxGameobject);
         }
     }
 

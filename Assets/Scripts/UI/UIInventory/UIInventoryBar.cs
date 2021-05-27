@@ -9,6 +9,7 @@ public class UIInventoryBar : MonoBehaviour
     [SerializeField] private UIInventorySlot[] inventorySlot = null;
     public GameObject inventoryBarDraggedItem;
 
+    [HideInInspector] public GameObject inventoryTextBoxGameobject;
 
     // Rect transform 
     private RectTransform rectTransform;
