@@ -24,7 +24,7 @@ public class Item : MonoBehaviour
         }
     }
 
-    //Do later
+ 
     public void Init(int itemCodeParam)
     {
         if(itemCodeParam != 0)

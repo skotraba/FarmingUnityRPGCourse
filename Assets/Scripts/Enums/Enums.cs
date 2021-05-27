@@ -1,4 +1,69 @@
-﻿public enum InventoryLocation
+﻿public enum AnimationName 
+{
+    idleDown,
+    idleUp,
+    idleRight,
+    idleLeft,
+    walkUp,
+    walkDown,
+    walkLeft,
+    walkRight,
+    runUp,
+    runDown,
+    runLeft,
+    runRight,
+    useToolUp,
+    useToolDown,
+    useToolLeft,
+    useToolRight,
+    swingToolUp,
+    swingToolDown,
+    swingToolLeft,
+    swingToolRight,
+    liftToolUp,
+    liftToolDown,
+    liftToolLeft,
+    liftToolRight,
+    holdToolUp,
+    holdToolDown,
+    holdToolLeft,
+    holdToolRight,
+    pickDown,
+    pickUp,
+    pickLeft,
+    pickRight,
+    count
+}
+
+public enum CharacterPartAnimator
+{
+    Body,
+    Arms,
+    Hair,
+    Tool,
+    Hat,
+    count
+}
+
+public enum PartVariantColor
+{
+    none,
+    count
+}
+
+public enum PartVariantType
+{
+    none,
+    carry,
+    hoe,
+    pickaxe,
+    axe,
+    scythe,
+    wateringCan,
+    count
+}
+
+public enum InventoryLocation
 {
     player,
     chest,

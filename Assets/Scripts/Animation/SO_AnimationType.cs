@@ -1,18 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class SO_AnimationType : MonoBehaviour
+[CreateAssetMenu(fileName = "so_AnimationType", menuName = "Animation/Animation/Type")]
+public class SO_AnimationType : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   public AnimationClip animationClip;
+   public AnimationName animationName;
+   public CharacterPartAnimator characterPart;
+   public PartVariantColor partVariantColor;
+   public PartVariantType partVariantType;
 }

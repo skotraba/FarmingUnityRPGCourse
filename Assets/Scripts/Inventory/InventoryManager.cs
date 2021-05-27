@@ -96,7 +96,7 @@ public class InventoryManager : SingletonMonoBehavior<InventoryManager>
         inventoryItem.itemQuantity = 1;
         inventoryList.Add(inventoryItem);
 
-        DebugPrintInventoryList(inventoryList);
+        // DebugPrintInventoryList(inventoryList);
     }
 
     // Add item to list if it already exists
@@ -110,7 +110,7 @@ public class InventoryManager : SingletonMonoBehavior<InventoryManager>
         inventoryList[position] = inventoryItem;
 
         Debug.ClearDeveloperConsole();
-        DebugPrintInventoryList(inventoryList);
+        // DebugPrintInventoryList(inventoryList);
 
     }
 
