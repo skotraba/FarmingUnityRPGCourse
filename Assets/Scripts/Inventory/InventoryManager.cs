@@ -97,6 +97,23 @@ public class InventoryManager : SingletonMonoBehavior<InventoryManager>
 
     }
 
+    // Swap item from Item index with item at toItem index
+    public void SwapInventoryItems(InventoryLocation inventoryLocation, int fromItem, int toItem)
+    {
+        // if from item index and to itemindex are within the bounds of the list, not the same, and greater than or equal to zero
+        if (fromItem < inventoryLists[(int)inventoryLocation].Count && toItem < inventoryLists[(int)inventoryLocation].Count && fromItem != toItem && fromItem >= 0 && toItem >= 0)
+        {
+            InventoryItem fromInventoryItem = inventoryLists[(int)inventoryLocation][fromItem];
+            InventoryItem toInventoryItem = inventoryLists[(int)inventoryLocation][toItem];
+
+            inventoryLists[(int)inventoryLocation][toItem] = fromInventoryItem;
+            inventoryLists[(int)inventoryLocation][fromItem] = toInventoryItem;
+
+            // Send event that inventory has been updated
+            EventHandler.CallInventoryUpdatedEvent(inventoryLocation, inventoryLists[(int)inventoryLocation]);
+        }
+    }
+
     // Add item to end of list
     public void DebugPrintInventoryList(List<InventoryItem> inventoryList)
     {
