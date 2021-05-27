@@ -4,14 +4,23 @@ using UnityEngine;
 
 public class InventoryManager : SingletonMonoBehavior<InventoryManager>
 {
+
+
    //Create a dictionary to hold inventory items, makes items more accesible
     private Dictionary<int, ItemDetails> itemDetailsDictionary;
+
+    private int[] selectedInventoryItem; // index of the array is the inventory list, and te value is the item code
 
     public List<InventoryItem>[] inventoryLists;
 
     [HideInInspector] public int[] inventoryListCapacityIntArray;
 
     [SerializeField] private SO_ItemList itemList = null;
+
+
+
+
+    ////////////////Methods/////////////////////
 
     protected override void Awake()
     {
@@ -22,6 +31,14 @@ public class InventoryManager : SingletonMonoBehavior<InventoryManager>
 
         //Create item details dictionary
         CreateItemDetailsDictionary();
+
+        // Initialise selected inventory item array
+        selectedInventoryItem = new int[(int)InventoryLocation.count];
+
+        for(int i = 0; i < selectedInventoryItem.Length; i++)
+        {
+            selectedInventoryItem[i] = -1;
+        }
     }
 
     private void CreateInventoryLists()
@@ -112,6 +129,11 @@ public class InventoryManager : SingletonMonoBehavior<InventoryManager>
             // Send event that inventory has been updated
             EventHandler.CallInventoryUpdatedEvent(inventoryLocation, inventoryLists[(int)inventoryLocation]);
         }
+    }
+
+    public void ClearSelectedInventoryItem(InventoryLocation inventoryLocation)
+    {
+        selectedInventoryItem[(int)inventoryLocation] = -1;
     }
 
     // Add item to end of list
@@ -233,4 +255,11 @@ public class InventoryManager : SingletonMonoBehavior<InventoryManager>
             inventoryList.RemoveAt(position);
         }
     }
+
+    // Set the selected inventory item for inventoryLocation to itemCode
+    public void SetSelectedInventoryItem(InventoryLocation inventoryLocation, int itemCode)
+    {
+        selectedInventoryItem[(int)inventoryLocation] = itemCode;
+    }
+
 }
