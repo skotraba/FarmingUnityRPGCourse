@@ -86,6 +86,8 @@ public class Player : SingletonMonoBehavior<Player>
 
       PlayerWalkInput();
 
+      PlayerTestInput();
+
       EventHandler.CallMovementEvent(xInput, yInput, isWalking, isRunning, isIdle, isCarrying, toolEffect, 
         isUsingToolRight, isUsingToolLeft, isUsingToolUp, isUsingToolDown,
         isLiftingToolRight, isLiftingToolLeft, isLiftingToolUp, isLiftingToolDown,
@@ -229,6 +231,28 @@ public class Player : SingletonMonoBehavior<Player>
   {
     //Vector3 viewport position for player ((0,0) viewport bottom left, (1,1) viewport top right)
     return mainCamera.WorldToViewportPoint(transform.position);
+  }
+
+  // Check for key presses
+  private void PlayerTestInput()
+  {
+    // Trigger advance time
+    if (Input.GetKey(KeyCode.T))
+    {
+      TimeManager.Instance.TestAdvanceGameMinute();
+    }
+
+    // Trigger advance dat
+    if (Input.GetKey(KeyCode.G))
+    {
+      TimeManager.Instance.TestAdvanceGameDay();
+    }
+
+    // Test scene unload / load
+    if (Input.GetKeyDown(KeyCode.L))
+    {
+      SceneControllerManager.Instance.FadeAndLoadScene(SceneName.Scene1_Farm.ToString(), transform.position);
+    }
   }
 
   private void ResetMovement()

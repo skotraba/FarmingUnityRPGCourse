@@ -55,7 +55,7 @@ public class UIInventoryBar : MonoBehaviour
     private void InventoryUpdated(InventoryLocation inventoryLocation, List<InventoryItem> inventoryList)
     {
 
-        Debug.Log("Inventory Event");
+        // Debug.Log("Inventory Event");
 
         if(inventoryLocation == InventoryLocation.player)
         {

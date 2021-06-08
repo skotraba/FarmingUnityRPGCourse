@@ -3,17 +3,23 @@ using Cinemachine;
 
 public class SwitchConfineBoundingShape : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    // // Start is called before the first frame update
+    // void Start()
+    // {
+    //     SwitchBoundingShape();
+    // }
+
+    private void OnEnable()
     {
-        SwitchBoundingShape();
+        EventHandler.AfterSceneLoadEvent += SwitchBoundingShape;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDisable()
     {
-        
+        EventHandler.AfterSceneLoadEvent -= SwitchBoundingShape;
     }
+
+
 
     /// Switch the collider that cinemachine uses to define the edges of the screen
     private void SwitchBoundingShape()

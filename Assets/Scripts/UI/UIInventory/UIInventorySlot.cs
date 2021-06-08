@@ -10,7 +10,7 @@ public class UIInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 {
     private Camera mainCamera;
     private Transform parentItem;
-    private GameObject draggedItem;
+    [SerializeField] private GameObject draggedItem;
 
     private Canvas parentCanvas;
 
@@ -39,10 +39,20 @@ public class UIInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         parentCanvas = GetComponentInParent<Canvas>();
     }
 
+    private void OnEnable()
+    {
+        EventHandler.AfterSceneLoadEvent += SceneLoaded;
+    }
+
+     private void OnDisable()
+    {
+        EventHandler.AfterSceneLoadEvent -= SceneLoaded;
+    }
+
     private void Start()
     {
         mainCamera = Camera.main;
-        parentItem = GameObject.FindGameObjectWithTag(Tags.itemsParentTransform).transform;
+        // parentItem = GameObject.FindGameObjectWithTag(Tags.itemsParentTransform).transform;
     }
 
     private void DropSelectedItemAtMousePosition()
@@ -236,5 +246,10 @@ public class UIInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, I
                 }
             }
         }
+    }
+
+    private void SceneLoaded()
+    {
+        parentItem = GameObject.FindGameObjectWithTag(Tags.itemsParentTransform).transform;
     }
 }
